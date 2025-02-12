@@ -43,7 +43,7 @@ def get_exif_info(et, image_path):
         device = get_device_name(metadata)
         return date_time, device
     except Exception as e:
-        print(f"处理 {image_path} 时出错: {str(e)}")
+        print(f"处理 {image_path} 时出错: {str(e)}\n", flush=True)
         return None, None
 
 def rename_images(input_folder):
@@ -70,16 +70,16 @@ def rename_images(input_folder):
                 
                 try:
                     os.rename(file_path, new_path)
-                    print(f"已重命名: {filename} -> {new_name}")
+                    print(f"已重命名: {filename} -> {new_name}\n", flush=True)
                 except Exception as e:
-                    print(f"重命名失败: {filename} ({e})")
+                    print(f"重命名失败: {filename} ({e})\n", flush=True)
             else:
-                print(f"未找到日期信息: {filename}")
+                print(f"未找到日期信息: {filename}\n", flush=True)
 
 if __name__ == "__main__":
     input_folder = "main"
     if not os.path.exists(input_folder):
-        print(f"错误: 文件夹 '{input_folder}' 不存在")
+        print(f"错误: 文件夹 '{input_folder}' 不存在\n", flush=True)
     else:
         rename_images(input_folder)
-        print("重命名完成！")
+        print("重命名完成！\n", flush=True)
